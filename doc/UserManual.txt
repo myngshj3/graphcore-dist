@@ -1,0 +1,203 @@
+Japanese follows English.
+
+[English Version]
+Belows are simple user manual of GraphCore-Lite.
+
+Simple User Manual:
+(1) Downloading binary executable program and setting file
+Download binary executable program from the following web-site.
+
+  https://github.com/myngshj3/graphcore-lite/dist
+
+Download setting file from the following web-site.
+
+  https://github.com/myngshj3/graphcore-lite/config
+
+(2) Save executable file and setting file in the same directory and set that directory to PATH environment variable.
+
+(3) Booting GraphCore-Lite
+It is quite easy to boot GraphCore-Lite. Type on command prompt as below.
+
+  C:Users\myngshj3\App\GraphCore-Lite> graphcore
+
+If successfully executed, you will see prompt as below.
+
+  $>
+
+(4) Trying simulation
+Some simulation data are exposed and download-enabled from the following web-site.
+
+  https://github.com/myngshj3/graphcore-dist/data
+
+(5) Loading simulation data
+To load simulation data, type on prompt as below.
+
+  $> load -f="simulation-data-file"
+
+(6) Executing simulation
+To execute simulation, type on prompt as below.
+
+  $> sim [options...]
+
+The following options are available.
+
+  -k="simulation-type"
+  Available simulation types are below.
+    'wf' or 'workflow': Workflow simulator (DEFAULT).
+    'tm' or 'time': Time simulator
+
+  -t
+  Test simulation model and report
+
+  -a="statistical-test-target-properties"
+  Available statistical test target properties are specified as property list joined with semicolon (';').
+    (e.g. "cost;price;effort")
+  Any property specified in this option must be contained in simulation data.
+
+  -st[="statistical-test-target-properties"]
+  If this option specified, simulator iterates simulation and output statistic description. For iteraion times, see -i option.
+  If "statistical-test-target-properties" is not specified, only time property is output as statistic description.
+  Otherwise, for that properties, statistic descriptions are output.
+  As -a option, any of properties in that list must be contained in simulation data.
+
+  -i="iteration-times"
+  This option specifies iteration times for statistical calculation with -st option. Default value is 100.
+
+  -c="confidence-list" or -confidence="confidence-list"
+  This option specifies confidence to calculate confidence interval for properties assigned by -st option.
+  If this option is specified, confidence interval for confidences in this option is calculated and reported. Confidences are enabled to specified by property list separated by semicolon (';'). (e.g. -c="0.5;0.75;0.9")
+  Default value is 0.9.
+
+  -f="output-file"
+  This option specified target file to simulator output and save data. 
+
+(7) Simulation example
+In this section, simulation example using simulation data in the web-site https://github.com/myngshj3/graphcore-dist/data/workflow01.graph
+
+  Loading simulation data
+  $> load -f="workflow01.graph"
+
+  Testing simulation
+  $> sim -t -a="cost"
+
+  Executing simulation (1)
+  $> sim -k=wf -a="cost" -ar="workflow-finished;controller-finished;controlflow-finished;storage-closed"
+  You will see simulation output as below.
+  ...
+  ...
+  {"type": "storage", "name": "STD01", "state": "closed", "time": 429.7}
+  {"type": "storage", "name": "STD02", "state": "closed", "time": 429.7}
+  {"type": "storage", "name": "STD03", "state": "closed", "time": 429.7}
+  {"type": "controller", "name": "STConclude", "state": "finished", "time": 429.7}
+  {"type": "workflow", "name": "Workflow-01", "state": "finished", "time": 429.7}
+
+  Executing simulation (2)
+  $> sim -k=wf -st="cost" -i=200 -c="0.5;0.75;0.9" -ar="workflow-finished;controller-finished;controlflow-finished;storage-closed"
+  You will see simulation output as below.
+  ...
+  ...
+  {"type": "workflow", "name": "Workflow-01", "state": "finished", "time": 463.1, "cost": 416.0999999999874}
+  Mean cost: 408.21, cost interval for confidence 0.50: 407.52 - 408.91
+  Mean cost: 408.21, cost interval for confidence 0.75: 407.03 - 409.40
+  Mean cost: 408.21, cost interval for confidence 0.90: 406.51 - 409.92
+  Mean time: 455.49, time interval for confidence 0.50: 454.77 - 456.20
+  Mean time: 455.49, time interval for confidence 0.75: 454.26 - 456.71
+  Mean time: 455.49, time interval for confidence 0.90: 453.73 - 457.24
+
+
+[日本語版]
+以下は、GraphCore-Lite の簡易マニュアルです。
+
+簡易マニュアル:
+
+(1) バイナリ実行可能プログラムと設定ファイルのダウンロード
+バイナリ実行可能プログラムを以下のWebサイトからダウンロードしてください。
+  https://github.com/myngshj3/graphcore-lite/dist
+
+設定ファイルを以下のディレクトリからダウンロードしてください。
+  https://github.com/myngshj3/graphcore-lite/config
+
+(2) 設定ファイルは実行可能プログラムと同じディレクトリに保存し、環境変数 PATH を通してください。
+
+(3) GraphCore-Liteの起動
+GraphCore-Liteの起動は極めて簡単です。コマンドプロンプトから次のようにタイプしてください。
+
+C:Users\myngshj3\App\GraphCore-Lite> graphcore
+
+うまく実行されれば、次のようなプロンプトが表示されます。
+
+  $>
+
+(4) シミュレーションを試す
+シミュレーションデータは公開されており、以下のWebサイトからダウンロードできます。
+
+  https://github.com/myngshj3/graphcore-dist/data
+
+(5) シミュレーションデータのロード
+シミュレーションデータをロードするには、プロンプトから以下のようにタイプします。
+
+  $> load -f="シミュレーションデータファイル名"
+
+(6) シミュレーションの実行
+シミュレーションを実行するには、以下のようにタイプします。
+
+  $> sim [options...]
+
+オプションは以下です。
+
+  -k="シミュレーションタイプ"
+  有効なシミュレーションタイプは以下です。
+    wf または workflow: ワークフローシミュレータ
+    tm または time: 時間シミュレータ
+
+  -t
+  シミュレーションのデータを検査し、レポートします。
+
+  -a="統計計算対象プロパティリスト"
+  有効な統計計算対象プロパティリストには、対象のプロパティ名をセミコロン(';')で区切って記述します。
+  このオプションで指定するプロパティは、シミュレーションデータにその情報が含まれていなければなりません。
+
+  -st[="統計計算対象プロパティリスト"]
+  このオプションが指定されている場合、シミュレーションを反復し統計を出力します。反復回数については -i オプションを参照してください。
+  有効な統計計算対象プロパティリストを指定しない場合、timeプロパティのみが統計計算対象になります。有効な統計計算対象プロパティリストを指定した場合、それのプロパティも統計計算対象になります。-a オプション同様、このプロパティリストのプロパティは、シミュレーションデータにその情報が含まれていなければなりません。
+
+  -i="反復回数"
+  このオプションは、-stオプションとともに用いられ、統計計算のための反復回数を指定します。規定値は 100 です。
+
+  -f="出力ファイル名"
+  このオプションを指定した場合、"出力ファイル名"に保存されます。 
+
+(7) シミュレーション例
+以下は、https://github.com/myngshj3/graphcore-dist/data/workflow01.graph をシミュレーションデータとしたシミュレーション例を示します。
+
+  シミュレーションデータのロード
+  $> load -f="workflow01.graph"
+
+  シミュレーションデータの検査
+  $> sim -t -a="cost"
+
+  シミュレーションの実行(1)
+  $> sim -k=wf -a="cost" -ar="workflow-finished;controller-finished;controlflow-finished;storage-closed"
+  以下のような出力を得ます。
+  ...
+  ...
+  {"type": "storage", "name": "STD01", "state": "closed", "time": 429.7}
+  {"type": "storage", "name": "STD02", "state": "closed", "time": 429.7}
+  {"type": "storage", "name": "STD03", "state": "closed", "time": 429.7}
+  {"type": "controller", "name": "STConclude", "state": "finished", "time": 429.7}
+  {"type": "workflow", "name": "Workflow-01", "state": "finished", "time": 429.7}
+
+  シミュレーションの実行(2)
+  $> sim -k=wf -st="cost" -i=200 -c="0.5;0.75;0.9" -ar="workflow-finished;controller-finished;controlflow-finished;storage-closed"
+  以下のような出力を得ます。
+  ...
+  ...
+  {"type": "workflow", "name": "Workflow-01", "state": "finished", "time": 463.1,
+"cost": 416.0999999999874}
+  Mean cost: 408.21, cost interval for confidence 0.50: 407.52 - 408.91
+  Mean cost: 408.21, cost interval for confidence 0.75: 407.03 - 409.40
+  Mean cost: 408.21, cost interval for confidence 0.90: 406.51 - 409.92
+  Mean time: 455.49, time interval for confidence 0.50: 454.77 - 456.20
+  Mean time: 455.49, time interval for confidence 0.75: 454.26 - 456.71
+  Mean time: 455.49, time interval for confidence 0.90: 453.73 - 457.24
+
