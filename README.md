@@ -6,29 +6,29 @@ Japanese follows English
 [English Version]
 
 This repository is open to present GraphCore products, my artifacts.
-This repository also will contain binary executable programs and data.
-It may contain also source code set for some developers who try building and executing by themselves.
+This repository contains binary executable programs and data.
+It may contain also source code set for some developers who want to try building and executing by themselves.
 
 GraphCore PoC version was opened in IPSJ/SIGSE Winter Workshop 2022, and author presented software project analysis using GraphCore simulation tool. This version is exposed in public repository as below.
 
   https:/github.com/myngshj3/graphcore-poc
 
-You can down load and try this application.
+You can download and try this application.
 
 Past GraphCore is located in the graphcore-poc repository to avoid repository name confliction.
-Past GraphCore needed Networkml library wich enabled universal network manipulations. NetworkML can be implemented as interpreter in your own application and GraphCore employed NetworkML as its interpreter.
+Past GraphCore needed NetworkML library which enabled universal network manipulations. NetworkML can be implemented as interpreter in your own application and GraphCore employed NetworkML as its interpreter.
 However, in current release, NetworkML is not under maintenance and GraphCore contains NetworkML as parts of functionalities.
  
 GraphCore-Lite:
 
 GraphCore-Lite is a GraphCore Light-weight Edition which enables us to manipulate and analyze network structure and also simulate discrete network system.
-Current release of GraphCore-Lite contains no Window-UI based functionality and supports only command-line interfacd (CLI).
+Current release of GraphCore-Lite contains no Window-UI based functionality and supports only command-line interface (CLI).
 
 To boot GraphCore-Lite edition in current release, type as the following:
 
 PROMPT> graphcore
 
-Here 'graphcore' command is binary distributed program and you don't need to install and setup for your own environment.
+Here, 'graphcore' command is binary distributed program and you don't need to install and setup for your own environment.
 
 For more detail, see doc/UserManual.txt.
 

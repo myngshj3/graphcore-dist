@@ -25,7 +25,7 @@ If successfully executed, you will see prompt as below.
   $>
 
 (4) Trying simulation
-Some simulation data are exposed and download-enabled from the following web-site.
+Some simulation data are exposed and download from the following web-site is enabled.
 
   https://github.com/myngshj3/graphcore-dist/data
 
@@ -50,14 +50,13 @@ The following options are available.
   Test simulation model and report
 
   -a="statistical-test-target-properties"
-  Available statistical test target properties are specified as property list joined with semicolon (';').
-    (e.g. "cost;price;effort")
+  Available statistical test target properties are specified as property list string separated by semicolon (';') (e.g. "cost;price;effort").
   Any property specified in this option must be contained in simulation data.
 
   -st[="statistical-test-target-properties"]
-  If this option specified, simulator iterates simulation and output statistic description. For iteraion times, see -i option.
-  If "statistical-test-target-properties" is not specified, only time property is output as statistic description.
-  Otherwise, for that properties, statistic descriptions are output.
+  If this option specified, simulator iterates simulation and output descriptive statistics. For iteraion times, see -i option.
+  If "statistical-test-target-properties" is not specified, only time property is output as descriptive statistics.
+  Otherwise, for that properties, descriptive statistics are output.
   As -a option, any of properties in that list must be contained in simulation data.
 
   -i="iteration-times"
@@ -65,11 +64,11 @@ The following options are available.
 
   -c="confidence-list" or -confidence="confidence-list"
   This option specifies confidence to calculate confidence interval for properties assigned by -st option.
-  If this option is specified, confidence interval for confidences in this option is calculated and reported. Confidences are enabled to specified by property list separated by semicolon (';'). (e.g. -c="0.5;0.75;0.9")
+  If this option is specified, confidence interval for confidences in this option is calculated and reported. Confidences are enabled to specified by property list string separated by semicolon (';') (e.g. -c="0.5;0.75;0.9").
   Default value is 0.9.
 
   -f="output-file"
-  This option specified target file to simulator output and save data. 
+  This option specified target file to save data simulation output.
 
 (7) Simulation example
 In this section, simulation example using simulation data in the web-site https://github.com/myngshj3/graphcore-dist/data/workflow01.graph
@@ -192,8 +191,7 @@ C:Users\myngshj3\App\GraphCore-Lite> graphcore
   以下のような出力を得ます。
   ...
   ...
-  {"type": "workflow", "name": "Workflow-01", "state": "finished", "time": 463.1,
-"cost": 416.0999999999874}
+  {"type": "workflow", "name": "Workflow-01", "state": "finished", "time": 463.1, "cost": 416.0999999999874}
   Mean cost: 408.21, cost interval for confidence 0.50: 407.52 - 408.91
   Mean cost: 408.21, cost interval for confidence 0.75: 407.03 - 409.40
   Mean cost: 408.21, cost interval for confidence 0.90: 406.51 - 409.92
