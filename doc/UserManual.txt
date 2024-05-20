@@ -7,11 +7,11 @@ Simple User Manual:
 (1) Downloading binary executable program and setting file
 Download binary executable program from the following web-site.
 
-  https://github.com/myngshj3/graphcore-lite/dist
+  https://github.com/myngshj3/graphcore-dist/dist
 
 Download setting file from the following web-site.
 
-  https://github.com/myngshj3/graphcore-lite/config
+  https://github.com/myngshj3/graphcore-dist/config
 
 (2) Save executable file and setting file in the same directory and set that directory to PATH environment variable.
 
@@ -111,10 +111,10 @@ In this section, simulation example using simulation data in the web-site https:
 
 (1) バイナリ実行可能プログラムと設定ファイルのダウンロード
 バイナリ実行可能プログラムを以下のWebサイトからダウンロードしてください。
-  https://github.com/myngshj3/graphcore-lite/dist
+  https://github.com/myngshj3/graphcore-dist/bin
 
 設定ファイルを以下のディレクトリからダウンロードしてください。
-  https://github.com/myngshj3/graphcore-lite/config
+  https://github.com/myngshj3/graphcore-dist/config
 
 (2) 設定ファイルは実行可能プログラムと同じディレクトリに保存し、環境変数 PATH を通してください。
 
