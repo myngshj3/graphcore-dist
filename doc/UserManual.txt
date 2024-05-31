@@ -7,13 +7,13 @@ Simple User Manual:
 (1) Downloading binary executable program and setting file
 Download binary executable program from the following web-site.
 
-  https://github.com/myngshj3/graphcore-dist/dist
+  https://github.com/myngshj3/graphcore-dist/bin
 
 Download setting file from the following web-site.
 
   https://github.com/myngshj3/graphcore-dist/config
 
-(2) Save executable file and setting file in the same directory and set that directory to PATH environment variable.
+(2) Save executable file and setting file in the same directory and set that directory to PATH environment variable and GRAPHCORE_HOME environment variable. You can change binary program filename as you like.
 
 (3) Booting GraphCore-Lite
 It is quite easy to boot GraphCore-Lite. Type on command prompt as below.
@@ -25,16 +25,20 @@ If successfully executed, you will see prompt as below.
   $>
 
 (4) Trying simulation
-Some simulation data are exposed and download from the following web-site is enabled.
+
+Some simulation model and data are exposed and download from the following web-site is enabled.
 
   https://github.com/myngshj3/graphcore-dist/data
 
-(5) Loading simulation data
-To load simulation data, type on prompt as below.
+(5) Loading simulation model
 
-  $> load -f="simulation-data-file"
+To load simulation model, type on prompt as below.
+
+  $> load -f="simulation-model-file"
+  e.g. load -f="wfbase.gcm"
 
 (6) Executing simulation
+
 To execute simulation, type on prompt as below.
 
   $> sim [options...]
@@ -57,7 +61,7 @@ The following options are available.
   If this option specified, simulator iterates simulation and output descriptive statistics. For iteraion times, see -i option.
   If "statistical-test-target-properties" is not specified, only time property is output as descriptive statistics.
   Otherwise, for that properties, descriptive statistics are output.
-  As -a option, any of properties in that list must be contained in simulation data.
+  As -a option, any of properties in that list must be defined in simulation model.
 
   -i="iteration-times"
   This option specifies iteration times for statistical calculation with -st option. Default value is 100.
@@ -71,10 +75,11 @@ The following options are available.
   This option specified target file to save data simulation output.
 
 (7) Simulation example
-In this section, simulation example using simulation data in the web-site https://github.com/myngshj3/graphcore-dist/data/workflow01.graph
 
-  Loading simulation data
-  $> load -f="workflow01.graph"
+In this section, simulation example using simulation model in the web-site https://github.com/myngshj3/graphcore-dist/data/wfbase.gcm
+
+  Loading simulation model
+  $> load -f="wfbase.gcm"
 
   Testing simulation
   $> sim -t -a="cost"
@@ -90,18 +95,48 @@ In this section, simulation example using simulation data in the web-site https:
   {"type": "controller", "name": "STConclude", "state": "finished", "time": 429.7}
   {"type": "workflow", "name": "Workflow-01", "state": "finished", "time": 429.7}
 
-  Executing simulation (2)
-  $> sim -k=wf -st="cost" -i=200 -c="0.5;0.75;0.9" -ar="workflow-finished;controller-finished;controlflow-finished;storage-closed"
+  Executing simulation and save result to specific file (2)
+  $> sim -k=wf -st="cost" -i=200 -c="0.5;0.75;0.9" -ar="workflow-finished;controller-finished;controlflow-finished;storage-closed" -f="wfbase-200.sim"
   You will see simulation output as below.
   ...
   ...
   {"type": "workflow", "name": "Workflow-01", "state": "finished", "time": 463.1, "cost": 416.0999999999874}
-  Mean cost: 408.21, cost interval for confidence 0.50: 407.52 - 408.91
-  Mean cost: 408.21, cost interval for confidence 0.75: 407.03 - 409.40
-  Mean cost: 408.21, cost interval for confidence 0.90: 406.51 - 409.92
-  Mean time: 455.49, time interval for confidence 0.50: 454.77 - 456.20
-  Mean time: 455.49, time interval for confidence 0.75: 454.26 - 456.71
-  Mean time: 455.49, time interval for confidence 0.90: 453.73 - 457.24
+
+  Detail result is saved to "wfbase-200.sim"
+
+Evaluating simulation result
+$> postplot -f="wfbase-200.sim" -a="cost;time" -sc="hist"
+
+  You will see descriptive statistics derived from simulation result "wfbase-200.sim" as below.
+  
+  Median time: 182.00, Mean time: 182.13, time interval for confidence 0.50: [175.12 , 188.88]
+  Median time: 182.00, Mean time: 182.13, time interval for confidence 0.60: [173.44 , 190.57]
+  Median time: 182.00, Mean time: 182.13, time interval for confidence 0.70: [171.41 , 192.60]
+  Median time: 182.00, Mean time: 182.13, time interval for confidence 0.80: [168.71 , 195.30]
+  Median time: 182.00, Mean time: 182.13, time interval for confidence 0.90: [165.70 , 198.31]
+  Median cost: 402.70, Mean cost: 403.36, cost interval for confidence 0.50: [389.06 , 416.36]
+  Median cost: 402.70, Mean cost: 403.36, cost interval for confidence 0.60: [385.89 , 419.53]
+  Median cost: 402.70, Mean cost: 403.36, cost interval for confidence 0.70: [381.61 , 423.81]
+  Median cost: 402.70, Mean cost: 403.36, cost interval for confidence 0.80: [376.39 , 429.03]
+  Median cost: 402.70, Mean cost: 403.36, cost interval for confidence 0.90: [369.96 , 435.46]
+
+  Also, you will see the histgrams for 'cost' property and 'time' property derived.
+
+Evaluating risk
+$> postplot -f="wfbase-200.sim" -a="cost;time" -sc="hist"
+
+  You will see the risk calculated for cost as below.
+
+  Risk probability of cost for interval [389.06,416.36] and base 402.70: 0.24
+  Risk expectation of cost for interval [389.06,416.36] and base 402.70: 105.43
+  Risk probability of cost for interval [385.89,419.53] and base 402.70: 0.20
+  Risk expectation of cost for interval [385.89,419.53] and base 402.70: 85.66
+  Risk probability of cost for interval [381.61,423.81] and base 402.70: 0.16
+  Risk expectation of cost for interval [381.61,423.81] and base 402.70: 71.00
+  Risk probability of cost for interval [376.39,429.03] and base 402.70: 0.12
+  Risk expectation of cost for interval [376.39,429.03] and base 402.70: 51.40
+  Risk probability of cost for interval [369.96,435.46] and base 402.70: 0.07
+  Risk expectation of cost for interval [369.96,435.46] and base 402.70: 29.78
 
 
 [日本語版]
@@ -116,7 +151,7 @@ In this section, simulation example using simulation data in the web-site https:
 設定ファイルを以下のディレクトリからダウンロードしてください。
   https://github.com/myngshj3/graphcore-dist/config
 
-(2) 設定ファイルは実行可能プログラムと同じディレクトリに保存し、環境変数 PATH を通してください。
+(2) 設定ファイルは実行可能プログラムと同じディレクトリに保存し、環境変数 PATH と環境変数 GRAPHCORE_HOME を通してください。
 
 (3) GraphCore-Liteの起動
 GraphCore-Liteの起動は極めて簡単です。コマンドプロンプトから次のようにタイプしてください。
@@ -132,11 +167,12 @@ C:Users\myngshj3\App\GraphCore-Lite> graphcore
 
   https://github.com/myngshj3/graphcore-dist/data
 
-(5) シミュレーションデータのロード
-シミュレーションデータをロードするには、プロンプトから以下のようにタイプします。
+(5) シミュレーションモデルのロード
+シミュレーションモデルをロードするには、プロンプトから以下のようにタイプします。
 
-  $> load -f="シミュレーションデータファイル名"
-
+  $> load -f="シミュレーションモデルファイル名"
+  e.g. load -f="wfbase.gcm"
+  
 (6) シミュレーションの実行
 シミュレーションを実行するには、以下のようにタイプします。
 
@@ -186,16 +222,47 @@ C:Users\myngshj3\App\GraphCore-Lite> graphcore
   {"type": "controller", "name": "STConclude", "state": "finished", "time": 429.7}
   {"type": "workflow", "name": "Workflow-01", "state": "finished", "time": 429.7}
 
-  シミュレーションの実行(2)
+  シミュレーションの実行とシミュレーション結果のファイル保存(2)
   $> sim -k=wf -st="cost" -i=200 -c="0.5;0.75;0.9" -ar="workflow-finished;controller-finished;controlflow-finished;storage-closed"
   以下のような出力を得ます。
+  You will see simulation output as below.
   ...
   ...
   {"type": "workflow", "name": "Workflow-01", "state": "finished", "time": 463.1, "cost": 416.0999999999874}
-  Mean cost: 408.21, cost interval for confidence 0.50: 407.52 - 408.91
-  Mean cost: 408.21, cost interval for confidence 0.75: 407.03 - 409.40
-  Mean cost: 408.21, cost interval for confidence 0.90: 406.51 - 409.92
-  Mean time: 455.49, time interval for confidence 0.50: 454.77 - 456.20
-  Mean time: 455.49, time interval for confidence 0.75: 454.26 - 456.71
-  Mean time: 455.49, time interval for confidence 0.90: 453.73 - 457.24
 
+
+  詳細な結果は、"wfbase-200.sim"に保存されます。
+
+  シミュレーション結果の評価
+  $> postplot -f="wfbase-200.sim" -a="cost;time" -sc="hist"
+
+  シミュレーション結果 "wfbase-200.sim" から導かれる記述統計を、以下のように見ることができます。
+  
+  Median time: 182.00, Mean time: 182.13, time interval for confidence 0.50: [175.12 , 188.88]
+  Median time: 182.00, Mean time: 182.13, time interval for confidence 0.60: [173.44 , 190.57]
+  Median time: 182.00, Mean time: 182.13, time interval for confidence 0.70: [171.41 , 192.60]
+  Median time: 182.00, Mean time: 182.13, time interval for confidence 0.80: [168.71 , 195.30]
+  Median time: 182.00, Mean time: 182.13, time interval for confidence 0.90: [165.70 , 198.31]
+  Median cost: 402.70, Mean cost: 403.36, cost interval for confidence 0.50: [389.06 , 416.36]
+  Median cost: 402.70, Mean cost: 403.36, cost interval for confidence 0.60: [385.89 , 419.53]
+  Median cost: 402.70, Mean cost: 403.36, cost interval for confidence 0.70: [381.61 , 423.81]
+  Median cost: 402.70, Mean cost: 403.36, cost interval for confidence 0.80: [376.39 , 429.03]
+  Median cost: 402.70, Mean cost: 403.36, cost interval for confidence 0.90: [369.96 , 435.46]
+
+  また、コストと時間のヒストグラムを見ることができます。
+
+  リスクの評価
+  $> calcrisk -f="wfbase-200.sim" -a=cost -m=402.70 -i="389.06-416.36;385.89-419.53;381.61-423.81;376.39-429.03;369.96-435.46"
+
+  シミュレーション結果 "wfbase-200.sim" から計算される、指定した区間に対するリスクを、以下のように見ることができます。
+
+  Risk probability of cost for interval [389.06,416.36] and base 402.70: 0.24
+  Risk expectation of cost for interval [389.06,416.36] and base 402.70: 105.43
+  Risk probability of cost for interval [385.89,419.53] and base 402.70: 0.20
+  Risk expectation of cost for interval [385.89,419.53] and base 402.70: 85.66
+  Risk probability of cost for interval [381.61,423.81] and base 402.70: 0.16
+  Risk expectation of cost for interval [381.61,423.81] and base 402.70: 71.00
+  Risk probability of cost for interval [376.39,429.03] and base 402.70: 0.12
+  Risk expectation of cost for interval [376.39,429.03] and base 402.70: 51.40
+  Risk probability of cost for interval [369.96,435.46] and base 402.70: 0.07
+  Risk expectation of cost for interval [369.96,435.46] and base 402.70: 29.78

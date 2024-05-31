@@ -1,0 +1,896 @@
+{
+  "graph": {
+    "name": "Wfbase",
+    "simulation-name": "Wfbase-simulation",
+    "time": 0
+  },
+  "nodes": [
+    [
+      "Launch",
+      {
+        "type": "controller",
+        "cost-per-time": 1,
+        "state": null,
+        "start-time": null,
+        "finished": false,
+        "end-time": null,
+        "start-time-scheduled": 0.0,
+        "end-time-scheduled": 10.0,
+        "consumption-time-scheduled": 10.0,
+        "consumed-time": 0.0,
+        "inactive-intervals": [],
+        "dataflows": [
+        ],
+        "graphics": {
+          "x": 10.0,
+          "y": 40.0,
+	  "width": 5,
+	  "height": 5,
+	  "font-height": 9
+        }
+      }
+    ],
+    [
+      "BDC",
+      {
+        "type": "controller",
+        "cost-per-time": 1,
+        "state": null,
+        "start-time": null,
+        "finished": false,
+        "end-time": null,
+        "start-time-scheduled": 10.0,
+        "end-time-scheduled": 20.0,
+        "consumption-time-scheduled": 10.0,
+        "consumed-time": 0.0,
+        "inactive-intervals": [],
+        "dataflows": [
+          [
+            "RQBase",
+            "BDD"
+          ],
+          [
+            "BDD",
+            "DDInput"
+          ],
+          [
+            "BDD",
+            "STDInput"
+          ]
+        ],
+        "graphics": {
+          "x": 20.0,
+          "y": 40.0,
+	  "width": 5,
+	  "height": 5,
+	  "font-height": 9
+        }
+      }
+    ],
+    [
+      "DDC",
+      {
+        "type": "controller",
+        "cost-per-time": 1,
+        "state": null,
+        "start-time": null,
+        "finished": false,
+        "end-time": null,
+        "start-time-scheduled": 40.0,
+        "end-time-scheduled": 50.0,
+        "consumption-time-scheduled": 9.0,
+        "consumed-time": 0.0,
+        "inactive-intervals": [],
+        "dataflows": [
+          [
+            "DDInput",
+            "DDD"
+          ],
+          [
+            "DDD",
+            "SMInput"
+          ],
+          [
+            "DDD",
+            "ITDInput"
+          ]
+        ],
+        "graphics": {
+          "x": 30.0,
+          "y": 40.0,
+	  "width": 5,
+	  "height": 5,
+	  "font-height": 9
+        }
+      }
+    ],
+    [
+      "SMC",
+      {
+        "type": "controller",
+        "cost-per-time": 1,
+        "state": null,
+        "start-time": null,
+        "finished": false,
+        "end-time": null,
+        "start-time-scheduled": 60.0,
+        "end-time-scheduled": 65.0,
+        "consumption-time-scheduled": 5.0,
+        "consumed-time": 0.0,
+        "inactive-intervals": [],
+        "dataflows": [
+          [
+            "SMInput",
+            "SMD"
+          ]
+        ],
+        "graphics": {
+          "x": 50.0,
+          "y": 40.0,
+	  "width": 5,
+	  "height": 5,
+	  "font-height": 9
+        }
+      }
+    ],
+    [
+      "ITDC",
+      {
+        "type": "controller",
+        "cost-per-time": 1,
+        "state": null,
+        "start-time": null,
+        "finished": false,
+        "end-time": null,
+        "start-time-scheduled": 60.0,
+        "end-time-scheduled": 65.0,
+        "consumption-time-scheduled": 5.0,
+        "consumed-time": 0.0,
+        "inactive-intervals": [],
+        "dataflows": [
+          [
+            "ITDInput",
+            "ITDD"
+          ]
+        ],
+        "graphics": {
+          "x": 60.0,
+          "y": 40.0,
+	  "width": 5,
+	  "height": 5,
+	  "font-height": 9
+        }
+      }
+    ],
+    [
+      "ITC",
+      {
+        "type": "controller",
+        "cost-per-time": 1,
+        "state": null,
+        "start-time": null,
+        "finished": false,
+        "end-time": null,
+        "start-time-scheduled": 60.0,
+        "end-time-scheduled": 65.0,
+        "consumption-time-scheduled": 5.0,
+        "consumed-time": 0.0,
+        "inactive-intervals": [],
+        "dataflows": [
+          [
+            "ITDD",
+            "ITD"
+          ]
+        ],
+        "graphics": {
+          "x": 70.0,
+          "y": 40.0,
+	  "width": 5,
+	  "height": 5,
+	  "font-height": 9
+        }
+      }
+    ],
+    [
+      "STDC",
+      {
+        "type": "controller",
+        "cost-per-time": 1,
+        "state": null,
+        "start-time": null,
+        "finished": false,
+        "end-time": null,
+        "start-time-scheduled": 65.0,
+        "end-time-scheduled": 70.0,
+        "consumption-time-scheduled": 5.0,
+        "consumed-time": 0.0,
+        "inactive-intervals": [],
+        "dataflows": [
+          [
+            "STDInput",
+            "STDD"
+          ]
+        ],
+        "graphics": {
+          "x": 80.0,
+          "y": 40.0,
+	  "width": 5,
+	  "height": 5,
+	  "font-height": 9
+        }
+      }
+    ],
+    [
+      "STC",
+      {
+        "type": "controller",
+        "cost-per-time": 1,
+        "state": null,
+        "start-time": null,
+        "finished": false,
+        "end-time": null,
+        "start-time-scheduled": 65.0,
+        "end-time-scheduled": 70.0,
+        "consumption-time-scheduled": 5.0,
+        "consumed-time": 0.0,
+        "inactive-intervals": [],
+        "dataflows": [
+          [
+            "STDD",
+            "STD"
+          ]
+        ],
+        "graphics": {
+          "x": 90.0,
+          "y": 40.0,
+	  "width": 5,
+	  "height": 5,
+	  "font-height": 9
+        }
+      }
+    ],
+    [
+      "RQBase",
+      {
+        "type": "storage",
+        "cost-per-time": 0,
+        "state": "opened",
+        "inbounds": 0,
+        "closed-inbounds": 0,
+        "loop-inbounds": 0,
+        "closed-loop-inbounds": 0,
+        "outbounds": 3,
+        "amount": 800,
+        "accumulated": 800,
+        "consumed-time": 0,
+        "unit": "items",
+        "graphics": {
+          "x": 10.0,
+          "y": 10.0,
+	  "width": 5,
+	  "height": 5,
+	  "font-height": 9
+        }
+      }
+    ],
+    [
+      "BDD",
+      {
+        "type": "storage",
+        "cost-per-time": 0,
+        "state": "opened",
+        "inbounds": 1,
+        "closed-inbounds": 0,
+        "loop-inbounds": 0,
+        "closed-loop-inbounds": 0,
+        "outbounds": 1,
+        "amount": 0,
+        "accumulated": 0,
+        "consumed-time": 0,
+        "unit": "items",
+        "graphics": {
+          "x": 20.0,
+          "y": 10.0,
+	  "width": 5,
+	  "height": 5,
+	  "font-height": 9
+        }
+      }
+    ],
+    [
+      "DDInput",
+      {
+        "type": "storage",
+        "cost-per-time": 0,
+        "state": "opened",
+        "inbounds": 1,
+        "closed-inbounds": 0,
+        "loop-inbounds": 0,
+        "closed-loop-inbounds": 0,
+        "outbounds": 3,
+        "amount": 0,
+        "accumulated": 0,
+        "consumed-time": 0,
+        "unit": "items",
+        "graphics": {
+          "x": 30.0,
+          "y": 10.0,
+	  "width": 5,
+	  "height": 5,
+	  "font-height": 9
+        }
+      }
+    ],
+    [
+      "STDInput",
+      {
+        "type": "storage",
+        "cost-per-time": 0,
+        "state": "opened",
+        "inbounds": 1,
+        "closed-inbounds": 0,
+        "loop-inbounds": 0,
+        "closed-loop-inbounds": 0,
+        "outbounds": 3,
+        "amount": 0,
+        "accumulated": 0,
+        "consumed-time": 0,
+        "unit": "items",
+        "graphics": {
+          "x": 30.0,
+          "y": 20.0,
+	  "width": 5,
+	  "height": 5,
+	  "font-height": 9
+        }
+      }
+    ],
+    [
+      "DDD",
+      {
+        "type": "storage",
+        "state": "opened",
+        "cost-per-time": 0,
+        "inbounds": 3,
+        "closed-inbounds": 0,
+        "loop-inbounds": 0,
+        "closed-loop-inbounds": 0,
+        "outbounds": 3,
+        "amount": 0,
+        "accumulated": 0,
+        "consumed-time": 0,
+        "unit": "items",
+        "graphics": {
+          "x": 40.0,
+          "y": 10.0,
+	  "width": 5,
+	  "height": 5,
+	  "font-height": 9
+        }
+      }
+    ],
+    [
+      "SMInput",
+      {
+        "type": "storage",
+        "state": "opened",
+        "cost-per-time": 0,
+        "inbounds": 3,
+        "closed-inbounds": 0,
+        "loop-inbounds": 0,
+        "closed-loop-inbounds": 0,
+        "outbounds": 3,
+        "amount": 0,
+        "accumulated": 0,
+        "consumed-time": 0,
+        "unit": "items",
+        "graphics": {
+          "x": 40.0,
+          "y": 10.0,
+	  "width": 5,
+	  "height": 5,
+	  "font-height": 9
+        }
+      }
+    ],
+    [
+      "ITDInput",
+      {
+        "type": "storage",
+        "state": "opened",
+        "cost-per-time": 0,
+        "inbounds": 3,
+        "closed-inbounds": 0,
+        "loop-inbounds": 0,
+        "closed-loop-inbounds": 0,
+        "outbounds": 3,
+        "amount": 0,
+        "accumulated": 0,
+        "consumed-time": 0,
+        "unit": "items",
+        "graphics": {
+          "x": 40.0,
+          "y": 10.0,
+	  "width": 5,
+	  "height": 5,
+	  "font-height": 9
+        }
+      }
+    ],
+    [
+      "SMD",
+      {
+        "type": "storage",
+        "state": "opened",
+        "cost-per-time": 0,
+        "inbounds": 3,
+        "closed-inbounds": 0,
+        "loop-inbounds": 0,
+        "closed-loop-inbounds": 0,
+        "outbounds": 3,
+        "amount": 0,
+        "accumulated": 0,
+        "consumed-time": 0,
+        "unit": "items",
+        "graphics": {
+          "x": 50.0,
+          "y": 10.0,
+	  "width": 5,
+	  "height": 5,
+	  "font-height": 9
+        }
+      }
+    ],
+    [
+      "ITDD",
+      {
+        "type": "storage",
+        "state": "opened",
+        "cost-per-time": 0,
+        "inbounds": 3,
+        "closed-inbounds": 0,
+        "loop-inbounds": 0,
+        "closed-loop-inbounds": 0,
+        "outbounds": 3,
+        "amount": 0,
+        "accumulated": 0,
+        "consumed-time": 0,
+        "unit": "items",
+        "graphics": {
+          "x": 60.0,
+          "y": 10.0,
+	  "width": 5,
+	  "height": 5,
+	  "font-height": 9
+        }
+      }
+    ],
+    [
+      "ITD",
+      {
+        "type": "storage",
+        "state": "opened",
+        "cost-per-time": 0,
+        "inbounds": 3,
+        "closed-inbounds": 0,
+        "loop-inbounds": 0,
+        "closed-loop-inbounds": 0,
+        "outbounds": 3,
+        "amount": 0,
+        "accumulated": 0,
+        "consumed-time": 0,
+        "unit": "items",
+        "graphics": {
+          "x": 70.0,
+          "y": 10.0,
+	  "width": 5,
+	  "height": 5,
+	  "font-height": 9
+        }
+      }
+    ],
+    [
+      "STDD",
+      {
+        "type": "storage",
+        "state": "opened",
+        "cost-per-time": 0,
+        "inbounds": 3,
+        "closed-inbounds": 0,
+        "loop-inbounds": 0,
+        "closed-loop-inbounds": 0,
+        "outbounds": 1,
+        "amount": 0,
+        "accumulated": 0,
+        "consumed-time": 0,
+        "unit": "items",
+        "graphics": {
+          "x": 80.0,
+          "y": 20.0,
+	  "width": 5,
+	  "height": 5,
+	  "font-height": 9
+        }
+      }
+    ],
+    [
+      "STD",
+      {
+        "type": "storage",
+        "state": "opened",
+        "cost-per-time": 0,
+        "inbounds": 3,
+        "closed-inbounds": 0,
+        "loop-inbounds": 0,
+        "closed-loop-inbounds": 0,
+        "outbounds": 0,
+        "amount": 0,
+        "accumulated": 0,
+        "consumed-time": 0,
+        "unit": "items",
+        "graphics": {
+          "x": 90.0,
+          "y": 20.0,
+	  "width": 5,
+	  "height": 5,
+	  "font-height": 9
+        }
+      }
+    ]
+  ],
+  "edges": [
+    [
+      [
+        "Launch",
+        "BDC"
+      ],
+      {
+        "type": "controlflow",
+        "state": null,
+        "cost-per-time": 0,
+        "velocity": 1,
+        "consumption-time": 0.01,
+        "consumed-time": 0
+      }
+    ],
+    [
+      [
+        "BDC",
+        "DDC"
+      ],
+      {
+        "type": "controlflow",
+        "state": null,
+        "cost-per-time": 0,
+        "velocity": 1,
+        "consumption-time": 0.01,
+        "consumed-time": 0
+      }
+    ],
+    [
+      [
+        "BDC",
+        "STDC"
+      ],
+      {
+        "type": "controlflow",
+        "state": null,
+        "cost-per-time": 0,
+        "velocity": 1,
+        "consumption-time": 0.01,
+        "consumed-time": 0
+      }
+    ],
+    [
+      [
+        "DDC",
+        "SMC"
+      ],
+      {
+        "type": "controlflow",
+        "state": null,
+        "cost-per-time": 0,
+        "velocity": 1,
+        "consumption-time": 0.01,
+        "consumed-time": 0
+      }
+    ],
+    [
+      [
+        "DDC",
+        "ITDC"
+      ],
+      {
+        "type": "controlflow",
+        "state": null,
+        "cost-per-time": 0,
+        "velocity": 1,
+        "consumption-time": 0.01,
+        "consumed-time": 0
+      }
+    ],
+    [
+      [
+        "SMC",
+        "ITC"
+      ],
+      {
+        "type": "controlflow",
+        "state": null,
+        "cost-per-time": 0,
+        "velocity": 1,
+        "consumption-time": 0.01,
+        "consumed-time": 0
+      }
+    ],
+    [
+      [
+        "ITDC",
+        "ITC"
+      ],
+      {
+        "type": "controlflow",
+        "state": null,
+        "cost-per-time": 0,
+        "velocity": 1,
+        "consumption-time": 0.01,
+        "consumed-time": 0
+      }
+    ],
+    [
+      [
+        "ITC",
+        "STC"
+      ],
+      {
+        "type": "controlflow",
+        "state": null,
+        "cost-per-time": 0,
+        "velocity": 1,
+        "consumption-time": 0.01,
+        "consumed-time": 0
+      }
+    ],
+    [
+      [
+        "STDC",
+        "STC"
+      ],
+      {
+        "type": "controlflow",
+        "state": null,
+        "cost-per-time": 0,
+        "velocity": 1,
+        "consumption-time": 0.01,
+        "consumed-time": 0
+      }
+    ],
+    [
+      [
+        "RQBase",
+        "BDD"
+      ],
+      {
+        "type": "dataflow",
+        "state": null,
+        "cost-per-time": 1,
+        "loopback": false,
+        "duplicator": false,
+        "velocity": 20,
+        "velocity-random": "normal",
+        "velocity-mean": 20,
+        "velocity-variance": 8.44,
+        "velocity-min": 17.0,
+        "velocity-max": 23.0,
+        "trans-coefficience": 1.16,
+        "consumed-time": 0
+      }
+    ],
+    [
+      [
+        "BDD",
+        "DDInput"
+      ],
+      {
+        "type": "dataflow",
+        "state": null,
+        "cost-per-time": 0,
+        "loopback": false,
+        "duplicator": true,
+        "velocity": 1000000.0,
+        "velocity-random": null,
+        "velocity-mean": 0.5,
+        "velocity-variance": 3,
+        "velocity-min": 0.3,
+        "velocity-max": 0.7,
+        "trans-coefficience": 2.0,
+        "consumed-time": 0
+      }
+    ],
+    [
+      [
+        "BDD",
+        "STDInput"
+      ],
+      {
+        "type": "dataflow",
+        "state": null,
+        "cost-per-time": 0,
+        "loopback": false,
+        "duplicator": true,
+        "velocity": 1000000.0,
+        "velocity-random": null,
+        "velocity-mean": 0.5,
+        "velocity-variance": 3,
+        "velocity-min": 0.3,
+        "velocity-max": 0.7,
+        "trans-coefficience": 2.0,
+        "consumed-time": 0
+      }
+    ],
+    [
+      [
+        "DDInput",
+        "DDD"
+      ],
+      {
+        "type": "dataflow",
+        "state": null,
+        "cost-per-time": 1,
+        "loopback": false,
+	"duplicator": false,
+        "velocity": 15.5,
+        "velocity-random": "normal",
+        "velocity-mean": 15.5,
+        "velocity-variance": 8.4,
+        "velocity-min": 12.48,
+        "velocity-max": 18.5,
+        "trans-coefficience": 1.08,
+        "consumed-time": 0
+      }
+    ],
+    [
+      [
+        "STDInput",
+        "STDD"
+      ],
+      {
+        "type": "dataflow",
+        "state": null,
+        "cost-per-time": 1,
+        "loopback": false,
+	"duplicator": false,
+        "velocity": 93.0,
+        "velocity-random": "normal",
+        "velocity-mean": 93.0,
+        "velocity-variance": 205,
+        "velocity-min": 78.1,
+        "velocity-max": 108,
+        "trans-coefficience": 0.599,
+        "consumed-time": 0
+      }
+    ],
+    [
+      [
+        "DDD",
+        "SMInput"
+      ],
+      {
+        "type": "dataflow",
+        "state": null,
+        "cost-per-time": 0,
+        "loopback": false,
+	"duplicator": true,
+        "velocity": 20000.0,
+        "velocity-random": null,
+        "velocity-mean": 20000.0,
+        "velocity-variance": 1.0,
+        "velocity-min": 10000,
+        "velocity-max": 30000,
+        "trans-coefficience": 2.0,
+        "consumed-time": 0
+      }
+    ],
+    [
+      [
+        "DDD",
+        "ITDInput"
+      ],
+      {
+        "type": "dataflow",
+        "state": null,
+        "cost-per-time": 0,
+        "loopback": false,
+	"duplicator": true,
+        "velocity": 20000.0,
+        "velocity-random": null,
+        "velocity-mean": 20000.0,
+        "velocity-variance": 1.0,
+        "velocity-min": 10000,
+        "velocity-max": 30000,
+        "trans-coefficience": 2.0,
+        "consumed-time": 0
+      }
+    ],
+    [
+      [
+        "SMInput",
+        "SMD"
+      ],
+      {
+        "type": "dataflow",
+        "state": null,
+        "cost-per-time": 1,
+        "loopback": false,
+        "velocity": 16.7,
+        "velocity-random": "normal",
+        "velocity-mean": 16.7,
+        "velocity-variance": 8.44,
+        "velocity-min": 13.7,
+        "velocity-max": 19.7,
+        "trans-coefficience": 0.556,
+        "consumed-time": 0
+      }
+    ],
+    [
+      [
+        "ITDInput",
+        "ITDD"
+      ],
+      {
+        "type": "dataflow",
+        "state": null,
+        "cost-per-time": 1,
+        "loopback": false,
+        "velocity": 100.0,
+        "velocity-random": "normal",
+        "velocity-mean": 100.0,
+        "velocity-variance": 211,
+        "velocity-min": 84.9,
+        "velocity-max": 115,
+        "trans-coefficience": 1.78,
+        "consumed-time": 0
+      }
+    ],
+    [
+      [
+        "ITDD",
+        "ITD"
+      ],
+      {
+        "type": "dataflow",
+        "state": null,
+        "loopback": false,
+        "cost-per-time": 1,
+        "velocity": 178,
+        "velocity-random": "normal",
+        "velocity-mean": 178,
+        "velocity-variance": 211,
+        "velocity-min": 163,
+        "velocity-max": 193,
+        "trans-coefficience": 1.0,
+        "consumed-time": 0
+      }
+    ],
+    [
+      [
+        "STDD",
+        "STD"
+      ],
+      {
+        "type": "dataflow",
+        "state": null,
+        "cost-per-time": 1,
+        "loopback": false,
+        "velocity": 55.7,
+        "velocity-random": "normal",
+        "velocity-mean": 55.7,
+        "velocity-variance": 211,
+        "velocity-min": 40.6,
+        "velocity-max": 70.8,
+        "trans-coefficience": 1,
+        "consumed-time": 0
+      }
+    ]
+  ]
+}
