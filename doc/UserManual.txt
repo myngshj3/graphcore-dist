@@ -86,6 +86,7 @@ In this section, simulation example using simulation model in the web-site https
 
   Executing simulation (1)
   $> sim -k=wf -a="cost" -ar="workflow-finished;controller-finished;controlflow-finished;storage-closed"
+
   You will see simulation output as below.
   ...
   ...
@@ -97,12 +98,13 @@ In this section, simulation example using simulation model in the web-site https
 
   Executing simulation and save result to specific file (2)
   $> sim -k=wf -st="cost" -i=200 -c="0.5;0.75;0.9" -ar="workflow-finished;controller-finished;controlflow-finished;storage-closed" -f="wfbase-200.sim"
+
   You will see simulation output as below.
   ...
   ...
   {"type": "workflow", "name": "Workflow-01", "state": "finished", "time": 463.1, "cost": 416.0999999999874}
 
-  Detail result is saved to "wfbase-200.sim"
+  Detail results are saved to "wfbase-200.sim"
 
 Evaluating simulation result
 $> postplot -f="wfbase-200.sim" -a="cost;time" -sc="hist"
@@ -123,7 +125,7 @@ $> postplot -f="wfbase-200.sim" -a="cost;time" -sc="hist"
   Also, you will see the histgrams for 'cost' property and 'time' property derived.
 
 Evaluating risk
-$> postplot -f="wfbase-200.sim" -a="cost;time" -sc="hist"
+$> calcrisk -f="wfbase-200.sim" -a="cost;time" -sc="hist"
 
   You will see the risk calculated for cost as below.
 
@@ -203,10 +205,10 @@ C:Users\myngshj3\App\GraphCore-Lite> graphcore
   このオプションを指定した場合、"出力ファイル名"に保存されます。 
 
 (7) シミュレーション例
-以下は、https://github.com/myngshj3/graphcore-dist/data/workflow01.graph をシミュレーションデータとしたシミュレーション例を示します。
+以下は、https://github.com/myngshj3/graphcore-dist/data/wfbase.gcm をシミュレーションデータとしたシミュレーション例を示します。
 
   シミュレーションデータのロード
-  $> load -f="workflow01.graph"
+  $> load -f="wfbase.gcm"
 
   シミュレーションデータの検査
   $> sim -t -a="cost"
